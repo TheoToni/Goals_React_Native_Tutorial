@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function GoalInput() {
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={styles.goalInput}>
       <Pressable
@@ -11,9 +12,9 @@ export default function GoalInput() {
       >
         <Text style={styles.addButtonText}>Add Goal</Text>
       </Pressable>
+
       <Modal
         visible={modalVisible}
-        transparent={true}
         animationType="slide"
         onRequestClose={() => setModalVisible(false)}
       >
@@ -21,9 +22,9 @@ export default function GoalInput() {
           <Text>test</Text>
           <Pressable
             onPress={() => setModalVisible(false)}
-            style={styles.addButton}
+            style={styles.closeButton}
           >
-            <Text style={styles.addButtonText}>Close</Text>
+            <Text style={styles.closeButtonText}>Close</Text>
           </Pressable>
         </View>
       </Modal>
@@ -44,8 +45,19 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional translucent background
+    justifyContent: "center", // Centers the content vertically
+    alignItems: "center", // Centers the content horizontally
+  },
+  closeButton: {
+    position: "absolute", // Absolute positioning
+    bottom: 30, // Places the button 30 units from the bottom
+    backgroundColor: "#FF5C00",
+    borderRadius: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+  },
+  closeButtonText: {
+    color: "white",
+    fontSize: 18,
   },
 });
