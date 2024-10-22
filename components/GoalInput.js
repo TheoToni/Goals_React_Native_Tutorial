@@ -1,4 +1,12 @@
-import { View, StyleSheet, Pressable, Text, Modal } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Pressable,
+  Text,
+  Modal,
+  TextInput,
+  Button,
+} from "react-native";
 import { useState } from "react";
 
 export default function GoalInput() {
@@ -19,7 +27,9 @@ export default function GoalInput() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <Text>test</Text>
+          <TextInput placeholder="Your Goal" style={styles.input}></TextInput>
+          <Button title="Add Goal"></Button>
+
           <Pressable
             onPress={() => setModalVisible(false)}
             style={styles.closeButton}
@@ -45,6 +55,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
+    padding: 16,
     justifyContent: "center", // Centers the content vertically
     alignItems: "center", // Centers the content horizontally
   },
@@ -59,5 +70,12 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: "white",
     fontSize: 18,
+  },
+  input: {
+    height: 40,
+    width: "100%",
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
