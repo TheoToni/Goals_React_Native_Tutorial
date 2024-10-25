@@ -1,5 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import GoalInput from "./components/GoalInput";
 import { useState } from "react";
 
@@ -13,7 +19,11 @@ export default function App() {
     ]);
   };
 
-  const deleteGoal = (goal) => {};
+  const deleteGoal = (goalId) => {
+    setGoals((currentGoals) =>
+      currentGoals.filter((goal) => goal.id !== goalId)
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -22,9 +32,11 @@ export default function App() {
         data={goals}
         keyExtractor={(item) => item.id}
         renderItem={(itemData) => (
-          <View style={styles.goalItem}>
-            <Text style={styles.goalItemText}>{itemData.item.text}</Text>
-          </View>
+          <TouchableOpacity onPress={() => deleteGoal(itemData.item.id)}>
+            <View style={styles.goalItem}>
+              <Text style={styles.goalItemText}>{itemData.item.text}</Text>
+            </View>
+          </TouchableOpacity>
         )}
       />
 
@@ -38,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingVertical: 100,
+    paddingTop: 100,
     paddingHorizontal: 20,
   },
   goalItem: {
@@ -49,9 +61,8 @@ const styles = StyleSheet.create({
   },
   goalItemText: {
     color: "white",
-    fontSize: 18,
   },
   goalList: {
-    flex: 1,
+    flex: 2,
   },
 });
