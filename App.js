@@ -50,17 +50,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 100,
+    paddingVertical: 60,
     paddingHorizontal: 20,
   },
   goalItem: {
-    padding: 10,
+    padding: 15,
     marginVertical: 10,
     backgroundColor: "purple",
-    borderRadius: 5,
+    borderRadius: 30,
   },
   goalItemText: {
     color: "white",
+    fontSize: 18,
   },
   goalList: {
     flex: 2,

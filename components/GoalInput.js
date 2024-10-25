@@ -59,9 +59,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF5C00",
     borderRadius: 30,
     marginTop: 60,
+    justifyContent: "center",
+    alignItems: "center",
   },
   addButtonText: {
     fontSize: 18,
+    fontWeight: "600",
     color: "white",
     paddingHorizontal: 30,
     paddingVertical: 15,
