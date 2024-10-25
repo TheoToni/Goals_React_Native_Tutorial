@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   goalInput: {
     backgroundColor: "#FF5C00",
     borderRadius: 30,
+    marginTop: 60,
   },
   addButtonText: {
     fontSize: 18,

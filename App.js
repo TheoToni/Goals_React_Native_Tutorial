@@ -6,7 +6,6 @@ import { useState } from "react";
 export default function App() {
   const [goals, setGoals] = useState([]);
 
-  // Funktion zum Hinzufügen eines neuen Ziels
   const addGoal = (goal) => {
     setGoals((currentGoals) => [
       ...currentGoals,
@@ -14,15 +13,17 @@ export default function App() {
     ]);
   };
 
+  const deleteGoal = (goal) => {};
+
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.goalList}
         data={goals}
-        keyExtractor={(item) => item.id} // Eindeutiger Schlüssel für jedes Element
+        keyExtractor={(item) => item.id}
         renderItem={(itemData) => (
           <View style={styles.goalItem}>
-            <Text>{itemData.item.text}</Text>
+            <Text style={styles.goalItemText}>{itemData.item.text}</Text>
           </View>
         )}
       />
@@ -37,15 +38,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 50,
+    paddingVertical: 100,
+    paddingHorizontal: 20,
   },
   goalItem: {
     padding: 10,
-    marginVertical: 5,
-    backgroundColor: "#ccc",
+    marginVertical: 10,
+    backgroundColor: "purple",
     borderRadius: 5,
   },
+  goalItemText: {
+    color: "white",
+    fontSize: 18,
+  },
   goalList: {
-    flex: 2,
+    flex: 1,
   },
 });
