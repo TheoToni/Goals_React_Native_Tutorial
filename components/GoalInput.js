@@ -9,8 +9,15 @@ import {
 } from "react-native";
 import { useState } from "react";
 
-export default function GoalInput() {
+export default function GoalInput(props) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [inputText, setInputText] = useState("");
+
+  const addGoalHandler = () => {
+    props.onAddGoal(inputText);
+    setInputText("");
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.goalInput}>
@@ -27,8 +34,13 @@ export default function GoalInput() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <TextInput placeholder="Your Goal" style={styles.input}></TextInput>
-          <Button title="Add Goal"></Button>
+          <TextInput
+            value={inputText}
+            placeholder="Your Goal"
+            style={styles.input}
+            onChangeText={(newText) => setInputText(newText)}
+          ></TextInput>
+          <Button title="Add Goal" onPress={addGoalHandler}></Button>
 
           <Pressable
             onPress={() => setModalVisible(false)}
