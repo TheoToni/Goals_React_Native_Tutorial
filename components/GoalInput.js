@@ -13,7 +13,9 @@ export default function GoalInput(props) {
   const [inputText, setInputText] = useState("");
 
   const addGoalHandler = () => {
-    props.onAddGoal(inputText);
+    if (inputText != "") {
+      props.onAddGoal(inputText);
+    }
     setInputText("");
     setModalVisible(false);
   };
