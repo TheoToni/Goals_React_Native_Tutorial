@@ -5,7 +5,6 @@ import {
   Text,
   Modal,
   TextInput,
-  Button,
 } from "react-native";
 import { useState } from "react";
 
@@ -25,7 +24,7 @@ export default function GoalInput(props) {
         android_ripple={{ color: "#ddd", borderless: true }}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.addButtonText}>Add Goal</Text>
+        <Text style={styles.orangeButton}>Add Goal</Text>
       </Pressable>
 
       <Modal
@@ -39,12 +38,16 @@ export default function GoalInput(props) {
             placeholder="Your Goal"
             style={styles.input}
             onChangeText={(newText) => setInputText(newText)}
-          ></TextInput>
-          <Button title="Add Goal" onPress={addGoalHandler}></Button>
+          />
+
+          {/* Neon-Purple "Add Goal" Button */}
+          <Pressable style={styles.neonAddButton} onPress={addGoalHandler}>
+            <Text style={styles.addButtonText}>Add Goal</Text>
+          </Pressable>
 
           <Pressable
             onPress={() => setModalVisible(false)}
-            style={styles.closeButton}
+            style={styles.orangeAddButton}
           >
             <Text style={styles.closeButtonText}>Close</Text>
           </Pressable>
@@ -62,23 +65,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  neonAddButton: {
+    backgroundColor: "purple",
+    borderRadius: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    marginTop: 20,
+  },
+  orangeButton: {
+    padding: 15,
+    color: "white",
+    fontSize: 18,
+    fontWeight: "600",
+  },
   addButtonText: {
     fontSize: 18,
     fontWeight: "600",
     color: "white",
-    paddingHorizontal: 30,
-    paddingVertical: 15,
+    textAlign: "center",
   },
-  modalContainer: {
-    flex: 1,
-    padding: 16,
-    justifyContent: "center", // Centers the content vertically
-    alignItems: "center", // Centers the content horizontally
-  },
-  closeButton: {
-    position: "absolute", // Absolute positioning
-    bottom: 30, // Places the button 30 units from the bottom
-    backgroundColor: "#FF5C00",
+  orangeAddButton: {
+    position: "absolute",
+    bottom: 30,
+    backgroundColor: "#FF5C00", // Eigenes Styling für den orangenen Button
     borderRadius: 30,
     paddingHorizontal: 40,
     paddingVertical: 15,
@@ -86,6 +95,12 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: "white",
     fontSize: 18,
+  },
+  modalContainer: {
+    flex: 1,
+    padding: 16,
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     height: 40,
